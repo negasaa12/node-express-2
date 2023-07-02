@@ -113,6 +113,13 @@ describe("GET /users/[username]", function() {
     expect(response.statusCode).toBe(401);
   });
 
+   /** FIXES BUG 1*/
+    test('if no user exist, throw error 404', async function(){
+      const response = await request(app).get('/users/sde').send({ _token: tokens.u3})
+
+      expect(response.statusCode).toBe(404);
+    })
+
   test("should return data on u1", async function() {
     const response = await request(app)
       .get("/users/u1")

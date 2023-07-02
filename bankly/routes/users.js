@@ -68,7 +68,7 @@ router.patch('/:username', authUser, requireLogin, requireAdmin, async function(
   res,
   next
 ) {
-  try {
+  try { 
     if (!req.curr_admin && req.curr_username !== req.params.username) {
       throw new ExpressError('Only  that user or admin can edit a user.', 401);
     }
